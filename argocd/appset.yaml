@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/vojtechmares-exaples/notino-kargo.git
+        repoURL: https://github.com/vojtechmares-examples/notino-kargo.git
         revision: HEAD
         directories:
           - path: env/*
@@ -22,5 +22,5 @@ spec:
       project: guestbook
       source:
         path: ./
-        repoURL: https://github.com/vojtechmares-exaples/notino-kargo.git
+        repoURL: https://github.com/vojtechmares-examples/notino-kargo.git
         targetRevision: env/{{path.basename}}
