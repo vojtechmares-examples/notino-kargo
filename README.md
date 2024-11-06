@@ -81,3 +81,32 @@ This demo is based on [kargo-advanced](https://github.com/akuity/kargo-advanced)
     ```bash
     ./scripts/new-tag.sh
     ```
+
+## Manual _Freight_ approval
+
+In case something breaks, you can still manually approve _Freight_ for stage promotion to get unstuck via `kargo` cli:
+
+```bash
+kargo approve \
+  --freight <freight id> \
+  --stage prod \
+  --project notino-demo
+```
+
+To get the _Freight_ ID, just list them with `kubectl`:
+
+```bash
+kubectl get freight -n notino-demo
+```
+
+For more information, see [documentation](https://docs.kargo.io/how-to-guides/working-with-freight#manual-approvals).
+
+## Analysis for automated stage promotions
+
+Analysis is an Argo Rollouts [feature](https://argoproj.github.io/argo-rollouts/features/analysis/)
+
+There are some analysis examples in this repo for convenience:
+
+- [job analysis](/examples/job-analysis.yaml)
+- [prometheus metrics analysis](/examples/prometheus-metrics-analysis.yaml)
+- [web analysis (request to API)](/examples/web-analysis.yaml)
