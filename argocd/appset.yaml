@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/vojtechmares-exaples/notino-kargo.git
         revision: HEAD
         directories:
-          - path: app/env/*
+          - path: env/*
   template:
     metadata:
       name: guestbook-{{path.basename}}
@@ -23,4 +23,4 @@ spec:
       source:
         path: ./
         repoURL: https://github.com/vojtechmares-exaples/notino-kargo.git
-        targetRevision: app/env/{{path.basename}}
+        targetRevision: env/{{path.basename}}
