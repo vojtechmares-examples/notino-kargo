@@ -1,0 +1,5 @@
+**/*.auto.tfvars
+**/*.tfstate
+**/*.tfstate.backup
+**/.terraform
+**/kubeconfig.yaml

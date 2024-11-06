@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/vojtechmares-exaples/notino-kargo.git
+        revision: HEAD
+        directories:
+          - path: app/env/*
+  template:
+    metadata:
+      name: guestbook-{{path.basename}}
+      annotations:
+        kargo.akuity.io/authorized-stage: notino-demo:{{path.basename}}
+    spec:
+      destination:
+        namespace: guestbook-{{path.basename}}
+        server: "https://kubernetes.default.svc"
+      project: guestbook
+      source:
+        path: ./
+        repoURL: https://github.com/vojtechmares-exaples/notino-kargo.git
+        targetRevision: app/env/{{path.basename}}

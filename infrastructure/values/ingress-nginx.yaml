@@ -1,0 +1,24 @@
+ingressClassResource:
+  default: "true"
+
+controller:
+  healthCheckPath: /healthz
+  replicaCount: 2
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+
+  service:
+    externalTrafficPolicy: Local
+    annotations:
+      service.beta.kubernetes.io/do-loadbalancer-name: "notino-kargo-k8s-ingress"
+      service.beta.kubernetes.io/do-loadbalancer-protocol: "tcp"
+      service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: "true"
+
+  config:
+    allow-snippet-annotations: "true"
+    generate-request-id: "true"
+    use-proxy-protocol: "true"
+    use-forwarded-headers: "true"
+    enable-real-ip: "true"

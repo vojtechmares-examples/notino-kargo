@@ -1,0 +1,21 @@
+global:
+  domain: notino-argocd.maresdemo.com
+
+server:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    tls: true
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      external-dns.alpha.kubernetes.io/hostname: notino-argocd.maresdemo.com
+      external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+
+certificate:
+  enabled: true
+  issuer:
+    group: "cert-manager.io"
+    kind: "ClusterIssuer"
+    name: "letsencrypt-dns-production"

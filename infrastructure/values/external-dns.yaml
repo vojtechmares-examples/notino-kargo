@@ -1,0 +1,19 @@
+provider:
+  name: cloudflare
+
+env:
+  - name: CF_API_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: cloudflare-api-token
+        key: token
+
+extraArgs:
+  - --cloudflare-dns-records-per-page=1000
+
+domainFilters:
+  - maresdemo.com
+
+txtOwnerId: notino-kargo
+txtPrefix: notino-kargo-
+policy: sync # also delete the DNS records when the k8s resource is deleted
