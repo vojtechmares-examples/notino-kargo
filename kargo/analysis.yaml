@@ -34,3 +34,30 @@ spec:
         web:
           url: https://cat-fact.herokuapp.com/facts/58e00b5f0aac31001185ed24
           jsonPath: "{$.status.sentCount}"
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: fake-sleep
+spec:
+  args:
+    - name: service-name
+  metrics:
+    # success of this analysis is job exit code 0
+    - name: test
+      provider:
+        job:
+          metadata:
+            annotations:
+              foo: bar # annotations defined here will be copied to the Job object
+            labels:
+              foo: bar # labels defined here will be copied to the Job object
+          spec:
+            backoffLimit: 1
+            template:
+              spec:
+                containers:
+                  - name: test
+                    image: alpine:3.20
+                    command: ["sh", "-c", "sleep 15"]
+                restartPolicy: Never
