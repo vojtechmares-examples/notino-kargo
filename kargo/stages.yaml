@@ -292,7 +292,7 @@ spec:
                     desiredCommitFromStep: commit
   verification:
     analysisTemplates:
-      - name: cat-fact
+      - name: fake-sleep
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
@@ -339,7 +339,7 @@ spec:
             checkout:
               - fromFreight: true
                 path: ./src
-              - branch: env/prod-west
+              - branch: env/prod-cz
                 path: ./out
                 # Create the branch if it does not exist.
                 create: true
@@ -355,14 +355,14 @@ spec:
         - uses: kustomize-set-image
           as: update-image
           config:
-            path: ./src/env/prod-west
+            path: ./src/env/prod-cz
             images:
               - image: ghcr.io/vojtechmares-examples/guestbook
         # Build the Kustomize configuration in the ./src directory using the
         # env/prod-west overlay to the ./out directory.
         - uses: kustomize-build
           config:
-            path: ./src/env/prod-west
+            path: ./src/env/prod-cz
             outPath: ./out
         # Commit the changes to the Git repository.
         - uses: git-commit
@@ -380,7 +380,7 @@ spec:
         - uses: argocd-update
           config:
             apps:
-              - name: guestbook-prod-west
+              - name: guestbook-prod-cz
                 sources:
                   - repoURL: https://github.com/vojtechmares-examples/notino-kargo.git
                     desiredCommitFromStep: commit
@@ -412,7 +412,7 @@ spec:
             checkout:
               - fromFreight: true
                 path: ./src
-              - branch: env/prod-central
+              - branch: env/prod-pl
                 path: ./out
                 # Create the branch if it does not exist.
                 create: true
@@ -428,14 +428,14 @@ spec:
         - uses: kustomize-set-image
           as: update-image
           config:
-            path: ./src/env/prod-central
+            path: ./src/env/prod-pl
             images:
               - image: ghcr.io/vojtechmares-examples/guestbook
         # Build the Kustomize configuration in the ./src directory using the
         # env/prod-central overlay to the ./out directory.
         - uses: kustomize-build
           config:
-            path: ./src/env/prod-central
+            path: ./src/env/prod-pl
             outPath: ./out
         # Commit the changes to the Git repository.
         - uses: git-commit
@@ -453,7 +453,7 @@ spec:
         - uses: argocd-update
           config:
             apps:
-              - name: guestbook-prod-central
+              - name: guestbook-prod-pl
                 sources:
                   - repoURL: https://github.com/vojtechmares-examples/notino-kargo.git
                     desiredCommitFromStep: commit
