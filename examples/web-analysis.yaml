@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: success-rate
+spec:
+  args:
+    - name: service-name
+  metrics:
+    - name: webmetric
+      successCondition: "result.ok && result.successPercent >= 0.90"
+      provider:
+        web:
+          url: "http://my-server.com/api/v1/measurement?service={{ args.service-name }}"
+          headers:
+            - key: Authorization
+              value: "Bearer {{ args.api-token }}"
+          jsonPath: "{$.data}"
+      # Expected response from the API:
+      # {
+      #   "data": {
+      #     "ok": true,
+      #     "successPercent": 0.95
+      #   }
+      # }
+      # with oauth:
+    - name: webmetric
+      successCondition: result == true
+      provider:
+        web:
+          url: "http://my-server.com/api/v1/measurement?service={{ args.service-name }}"
+          timeoutSeconds: 20 # defaults to 10 seconds
+          authentication:
+            oauth2:
+              tokenUrl: https://my-oauth2-provider/token
+              clientId: my-cliend-id
+              clientSecret: "{{ args.oauthSecret }}"
+              scopes: ["my-oauth2-scope"]
+          headers:
+            - key: Content-Type # if body is a json, it is recommended to set the Content-Type
+              value: "application/json"
+          jsonPath: "{$.data.ok}"
