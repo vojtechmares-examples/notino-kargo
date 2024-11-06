@@ -15,7 +15,7 @@ spec:
         app: guestbook
     spec:
       containers:
-      - image: ghcr.io/vojtechmares-examples/guestbook:v0.2.0
+      - image: ghcr.io/vojtechmares-examples/guestbook:v0.3.0
         name: guestbook
         ports:
         - containerPort: 3000
