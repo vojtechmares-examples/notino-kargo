@@ -41,7 +41,7 @@ spec:
           config:
             path: ./src/env/dev
             images:
-              - image: vojtechmaresnotino/guestbook
+              - image: ghcr.io/vojtechmares-examples/guestbook
         # Build the Kustomize configuration in the ./src directory using the env/dev
         # overlay to the ./out directory.
         - uses: kustomize-build
@@ -114,7 +114,7 @@ spec:
           config:
             path: ./src/env/staging
             images:
-              - image: vojtechmaresnotino/guestbook
+              - image: ghcr.io/vojtechmares-examples/guestbook
         # Build the Kustomize configuration in the ./src directory using the
         # env/staging overlay to the ./out directory.
         - uses: kustomize-build
@@ -187,7 +187,7 @@ spec:
           config:
             path: ./src/env/ab-test-a
             images:
-              - image: vojtechmaresnotino/guestbook
+              - image: ghcr.io/vojtechmares-examples/guestbook
         # Build the Kustomize configuration in the ./src directory using the
         # env/ab-test-a overlay to the ./out directory.
         - uses: kustomize-build
@@ -263,7 +263,7 @@ spec:
           config:
             path: ./src/env/ab-test-b
             images:
-              - image: vojtechmaresnotino/guestbook
+              - image: ghcr.io/vojtechmares-examples/guestbook
         # Build the Kustomize configuration in the ./src directory using the
         # env/ab-test-b overlay to the ./out directory.
         - uses: kustomize-build
@@ -357,7 +357,7 @@ spec:
           config:
             path: ./src/env/prod-west
             images:
-              - image: vojtechmaresnotino/guestbook
+              - image: ghcr.io/vojtechmares-examples/guestbook
         # Build the Kustomize configuration in the ./src directory using the
         # env/prod-west overlay to the ./out directory.
         - uses: kustomize-build
@@ -430,7 +430,7 @@ spec:
           config:
             path: ./src/env/prod-central
             images:
-              - image: vojtechmaresnotino/guestbook
+              - image: ghcr.io/vojtechmares-examples/guestbook
         # Build the Kustomize configuration in the ./src directory using the
         # env/prod-central overlay to the ./out directory.
         - uses: kustomize-build
@@ -503,7 +503,7 @@ spec:
           config:
             path: ./src/env/prod-east
             images:
-              - image: vojtechmaresnotino/guestbook
+              - image: ghcr.io/vojtechmares-examples/guestbook
         # Build the Kustomize configuration in the ./src directory using the
         # env/prod-east overlay to the ./out directory.
         - uses: kustomize-build
