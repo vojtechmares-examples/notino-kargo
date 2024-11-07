@@ -85,6 +85,11 @@ spec:
         direct: false
         stages:
           - dev
+    - origin:
+        kind: Warehouse
+        name: guestbook-hotfix
+      sources:
+        direct: true
   promotionTemplate:
     spec:
       steps:
