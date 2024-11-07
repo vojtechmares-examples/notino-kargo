@@ -39,9 +39,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
   name: fake-sleep
+  namespace: notino-demo
 spec:
-  args:
-    - name: service-name
   metrics:
     # success of this analysis is job exit code 0
     - name: test
