@@ -3,8 +3,8 @@ data "digitalocean_kubernetes_versions" "doks" {
 }
 
 resource "digitalocean_kubernetes_cluster" "foo" {
-  name   = "notino-kargo"
-  region = "fra1"
+  name    = "notino-kargo"
+  region  = "fra1"
   version = data.digitalocean_kubernetes_versions.doks.latest_version
 
   # use default node pool, for demo it's mode than enough
