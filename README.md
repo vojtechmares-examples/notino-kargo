@@ -8,7 +8,7 @@ This demo is based on [kargo-advanced](https://github.com/akuity/kargo-advanced)
 | --- | --- | --- |
 | ArgoCD | [`notino-argocd.maresdemo.com`](https://notino-argocd.maresdemo.com) | Crendetials: User: `admin`, Pass: `sIxEeez5-jC2ABD3` |
 | Kargo | [`notino-kargo.maresdemo.com`](https://notino-kargo.maresdemo.com) | Credentials: User: `admin`, Pass: `admin` |
-| Slides | [Google Slides](https://docs.google.com/presentation/d/1n5avpQIFkbXaGHVM4c5ZbJx18LAWTU8HNEJjwptrDeY/edit?usp=sharing) | |
+| Slides | [Google Slides](https://docs.google.com/presentation/d/1n5avpQIFkbXaGHVM4c5ZbJx18LAWTU8HNEJjwptrDeY/edit?usp=sharing) [.pptx](/notino-kargo.pptx) | |
 
 ## How to
 
